@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Custom scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #1a1d27; }
+::-webkit-scrollbar-thumb { background: #3b63f6; border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: #608bfa; }
+
+/* ── Base resets ───────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background-color: #0f1117;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Glass card ────────────────────────────────────────────────────────────── */
+.glass {
+  background: rgba(26, 29, 39, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(96, 139, 250, 0.15);
+  border-radius: 16px;
+}
+
+/* ── Gradient text ─────────────────────────────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #608bfa 0%, #a78bfa 50%, #60a5fa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Neon glow button ──────────────────────────────────────────────────────── */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #3b63f6, #7c3aed);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-glow:hover::before { opacity: 0.15; }
+.btn-glow:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(59, 99, 246, 0.4); }
+
+/* ── Shimmer loading ────────────────────────────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(90deg, #22253a 25%, #2a2e44 50%, #22253a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ── Drop zone glow ─────────────────────────────────────────────────────────── */
+.drop-active {
+  border-color: #3b63f6 !important;
+  background: rgba(59, 99, 246, 0.08) !important;
+  box-shadow: 0 0 30px rgba(59, 99, 246, 0.25);
+}
+
+/* ── Chat bubble ────────────────────────────────────────────────────────────── */
+.chat-bubble-user {
+  background: linear-gradient(135deg, #3b63f6, #7c3aed);
+  border-radius: 18px 18px 4px 18px;
+}
+.chat-bubble-ai {
+  background: rgba(26, 29, 39, 0.9);
+  border: 1px solid rgba(96, 139, 250, 0.2);
+  border-radius: 18px 18px 18px 4px;
+}
+
+/* ── Typing indicator ───────────────────────────────────────────────────────── */
+.typing-dot {
+  width: 8px; height: 8px;
+  background: #608bfa;
+  border-radius: 50%;
+  animation: typing 1.2s infinite;
+}
+.typing-dot:nth-child(2) { animation-delay: 0.2s; }
+.typing-dot:nth-child(3) { animation-delay: 0.4s; }
+@keyframes typing {
+  0%, 80%, 100% { transform: scale(1); opacity: 0.6; }
+  40% { transform: scale(1.3); opacity: 1; }
+}
